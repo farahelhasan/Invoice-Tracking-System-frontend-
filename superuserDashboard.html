@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles/userDashboard.css"> 
+</head>
+<style>
+    /* Initial style to hide the modal */
+    .modal {
+        display: none;
+       
+    }
+   
+</style>
+<body>
+    <!-- Top navigation bar -->
+    <div class="top-bar">
+        <h2>Admin Dashboard</h2>
+        <span id="userEmail"></span>
+    </div>
+
+    <!-- Controls for adding and searching invoices -->
+    <div class="controls">
+        <button id="addInvoiceBtn">Add New Invoice</button>
+        <button id="addInvoiceForUserBtn">Add Invoice for Specific User</button> <!-- New Button -->
+        <input type="text" id="searchInput" placeholder="Search invoices...">
+        <button id="searchBtn">Search</button>
+    </div>
+
+    <!-- Invoice Table -->
+    <table id="invoiceTable">
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>User Name</th>
+                <th>Show Items</th>
+                <th>View History</th>
+                <th>Delete Invoice</th>
+            </tr>
+        </thead>
+        <tbody id="invoiceTableBody">
+            <!-- Rows will be populated dynamically -->
+        </tbody>
+    </table>
+
+    <div id="paginationContainer">
+        <!-- Pagination buttons will be added here dynamically -->
+    </div>
+    
+
+    <!-- Add Invoice Modal -->
+<div id="addInvoiceModal" class="modal">
+    <div class="modal-content">
+        <h3>Add New Invoice</h3>
+        
+        <!-- Input for Specific User Email (hidden initially) -->
+        <div id="userEmailContainer">
+            <label>User Email:</label>
+            <input type="email" id="specificUserEmail" placeholder="Enter User Email">
+        </div>
+
+        <div id="itemsContainer">
+            <!-- Item inputs will be dynamically added here -->
+        </div>
+        
+        <button id="addItemBtn">Add Item</button>
+        <button id="submitInvoiceBtn">Submit Invoice</button>
+        <button id="closeModalBtn">Close</button>
+    </div>
+</div>
+
+    
+    <script src="scripts/superuserDashboard.js"></script> 
+</body>
+</html>
