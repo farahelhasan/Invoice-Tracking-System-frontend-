@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Items</title>
+    <link rel="stylesheet" href="styles/invoiceItem.css"> 
+</head>
+<body>
+    <h2>Invoice Items</h2>
+    <table border="1" id="itemsTable">
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th> 
+            </tr>
+        </thead>
+        <tbody id="itemsTableBody">
+            <!-- Item rows will be added dynamically -->
+        </tbody>
+    </table>
+
+      <!-- Display total price -->
+      <div id="totalPriceContainer">
+        <strong>Total Price:</strong> <span id="totalPrice">0.00</span>
+    </div>
+    
+    <!-- Add New Item Button -->
+    <button id="addNewItemBtn">Add New Item</button>
+
+    <!-- Modal for Item Selection -->
+    <div id="itemModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Select an Item to Add</h3>
+            <select id="itemSelect">
+                <!-- Items will be populated here -->
+            </select>
+            <label for="quantityInput">Quantity:</label>
+            <input type="number" id="quantityInput" min="1" value="1"> <!-- Quantity input field -->
+            <button id="confirmAddItem">Add Item</button>
+        </div>
+    </div>
+    
+
+    <script src="scripts/invoiceItemsScript.js"></script>
+</body>
+</html>

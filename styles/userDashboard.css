@@ -1,0 +1,184 @@
+#paginationContainer button.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Top bar styling */
+.top-bar {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: #4a90e2;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.top-bar h2 {
+    font-size: 1.5rem;
+}
+
+#userEmail {
+    font-size: 0.9rem;
+}
+
+/* Controls styling */
+.controls {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.controls input[type="text"] {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.controls button {
+    padding: 0.5rem 1rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.controls button:hover {
+    background-color: #357ab7;
+}
+
+/* Table styling */
+#invoiceTable {
+    width: 90%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#invoiceTable th, #invoiceTable td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#invoiceTable th {
+    background-color: #4a90e2;
+    color: white;
+}
+
+#invoiceTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#paginationContainer {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+#paginationContainer button {
+    padding: 0.5rem 1rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#paginationContainer button:hover {
+    background-color: #357ab7;
+}
+
+/* Modal styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal h3 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#itemsContainer {
+    margin-bottom: 1rem;
+}
+
+.modal-content button {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #357ab7;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #invoiceTable th, #invoiceTable td {
+        padding: 0.5rem;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+.buttonInsidTable {
+    padding: 0.5rem 1rem;
+    background-color: #7aaae1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
