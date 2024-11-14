@@ -27,7 +27,29 @@
         <button id="addInvoiceForUserBtn">Add Invoice for Specific User</button> <!-- New Button -->
         <input type="text" id="searchInput" placeholder="Search invoices...">
         <button id="searchBtn">Search</button>
+           <!-- Change User Role Button -->
+<button id="changeUserRoleBtn">Change User Role</button>
+
     </div>
+ 
+<!-- Change User Role Modal -->
+<div id="changeUserRoleModal" class="modal">
+    <div class="modal-content">
+        <h3>Change User Role</h3>
+         <!-- Input for Specific User Email (hidden initially) -->
+         <div id="userEmailInputdiv">
+            <label>User Email:</label>
+            <input type="email" id="userEmailInput" placeholder="Enter User Email">
+        </div>
+
+        <label for="userRoleSelect">Select New Role:</label>
+        <select id="userRoleSelect">
+            <!-- Roles will be populated here -->
+        </select>
+        <button id="submitRoleChangeBtn">Change Role</button>
+        <button id="closeRoleModalBtn">Close</button>
+    </div>
+</div>
 
     <!-- Invoice Table -->
     <table id="invoiceTable">

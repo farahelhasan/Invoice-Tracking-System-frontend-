@@ -21,9 +21,9 @@ async function fetchInvoices(page = 0) {
         console.log(totalPages);
         populateInvoiceTable(invoices);
         setupPagination(totalPages);
-    } else if(response.status == 403){
+    } else if(response.status == 401){
 
-        console.error('Failed to fetch invoices, please login first');
+        console.error('Please login first');
         window.location.href = `login.html`;
 
     }else{
@@ -126,6 +126,11 @@ async function search(page = 0){
         console.log(totalPages);
         populateInvoiceTable(invoices);
         setupPaginationSearch(totalPages);  
+    } else if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
     } else {
         console.error('Search failed');
     }
@@ -158,6 +163,11 @@ document.getElementById("searchBtn").addEventListener("click", async function() 
         console.log(totalPages);
         populateInvoiceTable(invoices);
         setupPaginationSearch(totalPages);  
+    } else if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
     } else {
         console.error('Search failed');
     }

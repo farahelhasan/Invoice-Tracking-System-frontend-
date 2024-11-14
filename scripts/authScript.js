@@ -38,8 +38,9 @@ document.getElementById("loginForm")?.addEventListener("submit", async function(
         window.location.href = 'auditorDashboard.html'; 
       }
 
-    } else {
-        alert('Login failed. Please check your credentials.');
+    }  else {
+        const data = await response.json();
+        alert('Login failed. Please check your credentials.\n'+ data.message+ "\n"+ data.statusCode );
     }
 });
 
@@ -63,7 +64,9 @@ document.getElementById("signupForm")?.addEventListener("submit", async function
         alert('Sign up successful! Please log in.');
         window.location.href = 'login.html'; // Redirect to login
     } else {
-        alert('Sign up failed. Please try again.');
+        const data = await response.json();
+        console.log(data)
+        alert('Sign up failed. Please try again. \n'+ data.message+ "\n"+ data.statusCode);
     }
 });
 

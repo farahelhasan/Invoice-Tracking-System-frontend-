@@ -19,7 +19,12 @@ async function fetchItems() {
 
         if (response.ok) {
             itemsList = await response.json();
-        } else {
+        } else if(response.status == 401){
+
+            console.error('Please login first');
+            window.location.href = `login.html`;
+    
+        }else {
             console.error("Failed to fetch items");
         }
     } catch (error) {
@@ -51,9 +56,9 @@ async function fetchInvoices(page = 0) {
         console.log(totalPages);
         populateInvoiceTable(invoices);
         setupPagination(totalPages);
-    } else if(response.status == 403){
+    } else if(response.status == 401){
 
-        console.error('Failed to fetch invoices, please login first');
+        console.error('Please login first');
         window.location.href = `login.html`;
 
     }else{
@@ -156,6 +161,11 @@ async function search(page = 0){
         console.log(totalPages);
         populateInvoiceTable(invoices);
         setupPaginationSearch(totalPages);  
+    } else if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
     } else {
         console.error('Search failed');
     }
@@ -190,7 +200,12 @@ document.getElementById("searchBtn").addEventListener("click", async function() 
         console.log(totalPages);
         populateInvoiceTable(invoices);
         setupPaginationSearch(totalPages);  
-      } else {
+    } else if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
+    } else {
         console.error('Search failed');
     }
 });
@@ -223,6 +238,11 @@ async function deleteInvoice(invoiceId) {
     if (response.ok) {
         alert("Invoice deleted successfully.");
         fetchInvoices(); // Refresh the table
+    } else if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
     } else {
         console.error('Failed to delete invoice');
     }
@@ -275,9 +295,9 @@ document.getElementById("addItemBtn").addEventListener("click", function() {
     quantityInput.required = true;
 
     // Append elements to the item row
-    itemDiv.innerHTML = `<label>Item:</label>`;
+    itemDiv.innerHTML = `<label> Item: </label>`;
     itemDiv.appendChild(select);
-    itemDiv.innerHTML += `<label>Quantity:</label>`;
+    itemDiv.innerHTML += `<label> Quantity: </label>`;
     itemDiv.appendChild(quantityInput);
 
     // Append the item row to the items container
@@ -324,8 +344,14 @@ document.getElementById("submitInvoiceBtn").addEventListener("click", async func
             alert("Invoice added successfully!");
             document.getElementById("addInvoiceModal").style.display = "none";
             fetchInvoices(); // Refresh the table
-        } else {
-            alert("Failed to add invoice.");
+        } else if(response.status == 401){
+
+            console.error('Please login first');
+            window.location.href = `login.html`;
+    
+        }else {
+            const data = await response.json();
+            alert("Failed to add invoice.\n"+ data.message+ "\n"+ data.statusCode);
         }
     } catch (error) {
         console.error("Error adding invoice:", error);

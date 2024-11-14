@@ -16,7 +16,11 @@ async function fetchInvoiceItems(invoiceId) {
             }
         });
         
-        if (!response.ok) {
+       if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+       }else if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
@@ -39,8 +43,11 @@ async function calculateTotalPrice(invoiceId){
                 'Content-Type': 'application/json'
             }
         });
-        
-        if (!response.ok) {
+        if(response.status == 401){
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
+        } else if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 

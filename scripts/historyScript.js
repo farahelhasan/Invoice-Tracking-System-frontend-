@@ -16,9 +16,14 @@ async function fetchHistory(invoiceId) {
     });
        console.log(response);
 
-       if (!response.ok) {
-           throw new Error(`HTTP error! status: ${response.status}`);
-       }
+       if(response.status == 401){
+
+        console.error('Please login first');
+        window.location.href = `login.html`;
+       }else if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+      
        const data = await response.json();
        viewHistory(data);
    } catch (error) {

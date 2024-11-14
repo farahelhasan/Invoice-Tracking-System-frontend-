@@ -17,15 +17,30 @@ async function calculateTotalPrice(invoiceId){
             }
         });
         
-        if (!response.ok) {
+        if (response.status == 401) {
+            console.error('Please login first');
+            window.location.href = `login.html`;
+
+        } else if(!response.ok ){
+
+            console.error('Failed to fetch invoices, please login first');
+            window.location.href = `login.html`;
             throw new Error(`HTTP error! status: ${response.status}`);
+
+    
         }
 
-        const data = await response.json();
-        document.getElementById("totalPrice").textContent = data.toFixed(2);
+        // Check if response body exists and is not empty before parsing
+        const data = await response.text();
+       
 
-        //const items = data.items;
-      // return data;
+        // Parse JSON response
+        if (data) {
+            document.getElementById("totalPrice").textContent = data;
+        } else {
+            console.error("Unexpected response format");
+            document.getElementById("totalPrice").textContent = "0.00";
+        }
         console.log(data);
     } catch (error) {
         console.error(error);
@@ -43,7 +58,11 @@ async function fetchInvoiceItems(invoiceId) {
             }
         });
         
-        if (!response.ok) {
+        if(response.status == 401){
+        console.error('Please login first');
+        window.location.href = `login.html`;
+
+        }else if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
@@ -141,7 +160,12 @@ async function updateQuantity(itemId, newQuantity, itemInvoiceId) {
         if (response.ok) {
             console.log(`Quantity updated for item with ID = ${itemId}`);
             fetchInvoiceItems(invoiceId); // Refresh the table to reflect the change
-        } else {
+        } else if(response.status == 401){
+
+            console.error('Please login first');
+            window.location.href = `login.html`;
+    
+        }else {
             console.error("Failed to update quantity.");
         }
     } catch (error) {
@@ -165,6 +189,11 @@ async function deleteItem(itemInvoiceId, itemId) {
         if (response.ok) {
             console.log(`Item with ID ${itemId} deleted`);
             fetchInvoiceItems(invoiceId); // Refresh the table to reflect the deletion
+        } else if(response.status == 401){
+
+            console.error('Please login first');
+            window.location.href = `login.html`;
+    
         } else {
             console.error("Failed to delete item.");
         }
@@ -210,6 +239,11 @@ async function fetchAvailableItems() {
         if (response.ok) {
             const items = await response.json();
             populateItemDropdown(items);
+        } else if(response.status == 401){
+
+            console.error('Please login first');
+            window.location.href = `login.html`;
+    
         } else {
             console.error("Failed to fetch items list.");
         }
@@ -252,6 +286,11 @@ document.getElementById("confirmAddItem").addEventListener("click", async () => 
             console.log("Item added to invoice.");
             fetchInvoiceItems(invoiceId); // Refresh the table
             document.getElementById("itemModal").style.display = "none";
+        } else if(response.status == 401){
+
+            console.error('Please login first');
+            window.location.href = `login.html`;
+    
         } else {
             console.error("Failed to add item to invoice.");
         }
